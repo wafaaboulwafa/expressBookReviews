@@ -53,7 +53,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
   const bookByIsbn = books[isbn];
   if (bookByIsbn) {
     bookByIsbn.reviews[req.session.username] = review;
-    return res.send(JSON.stringify(bookByIsbn, null, 4));
+    return res.json(bookByIsbn);
   } else {
     return res.status(404).json({ message: "Book not found for the ISBN" });
   }
