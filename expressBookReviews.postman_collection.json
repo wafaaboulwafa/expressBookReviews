@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "0f1811e2-1888-4926-8d20-de08b1167ab2",
+		"name": "expressBookReviews",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4566316"
+	},
+	"item": [
+		{
+			"name": "general",
+			"item": [
+				{
+					"name": "Get all books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get book by ISBN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/isbn/:isbn",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"isbn",
+								":isbn"
+							],
+							"variable": [
+								{
+									"key": "isbn",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get books by Auther",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/author/:author",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"author",
+								":author"
+							],
+							"variable": [
+								{
+									"key": "author",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get books by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/title/:title",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"title",
+								":title"
+							],
+							"variable": [
+								{
+									"key": "title",
+									"value": "Things Fall Apart"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get book review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/review/:isbn",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"review",
+								":isbn"
+							],
+							"variable": [
+								{
+									"key": "isbn",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"user2\",\r\n    \"password\" : \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"user2\",\r\n    \"password\" : \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/customer/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "registered",
+			"item": [
+				{
+					"name": "add review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\" : 10,\r\n    \"comment\" : \"comment\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/customer/auth/review/:isbn",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"auth",
+								"review",
+								":isbn"
+							],
+							"variable": [
+								{
+									"key": "isbn",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/customer/auth/review/:isbn",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customer",
+								"auth",
+								"review",
+								":isbn"
+							],
+							"variable": [
+								{
+									"key": "isbn",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:5000",
+			"type": "string"
+		}
+	]
+}
