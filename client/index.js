@@ -16,7 +16,7 @@ getBookByIsbn("1").then(function (book) {
 });
 
 // Search books by author using callback
-searchBooksByAuthor("Samuel Becket", function (books) {
+searchBooksByAuthor("Hans Christian Andersen", function (books) {
   console.log(books);
 });
 
