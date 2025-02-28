@@ -37,7 +37,7 @@ regd_users.post("/login", (req, res) => {
       username,
     };
 
-    return res.status(200).send("User successfully logged in");
+    return res.status(200).json({ message: "User successfully logged in" });
   } else {
     return res
       .status(208)
@@ -48,11 +48,24 @@ regd_users.post("/login", (req, res) => {
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
   const isbn = req.params.isbn;
-  const { review } = req.body;
+  const { rate, comment } = req.body;
   if (!isbn) return res.status(404).json({ message: "Invalid isbn parameter" });
   const bookByIsbn = books[isbn];
   if (bookByIsbn) {
-    bookByIsbn.reviews[req.session.username] = review;
+    bookByIsbn.reviews[req.session.authorization.username] = { rate, comment };
+    return res.json(bookByIsbn);
+  } else {
+    return res.status(404).json({ message: "Book not found for the ISBN" });
+  }
+});
+
+// Delete a book review
+regd_users.delete("/auth/review/:isbn", (req, res) => {
+  const isbn = req.params.isbn;
+  if (!isbn) return res.status(404).json({ message: "Invalid isbn parameter" });
+  const bookByIsbn = books[isbn];
+  if (bookByIsbn) {
+    delete bookByIsbn.reviews[req.session.authorization.username];
     return res.json(bookByIsbn);
   } else {
     return res.status(404).json({ message: "Book not found for the ISBN" });
